@@ -1,1 +1,75 @@
-dd
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추니 소개 페이지</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        a {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        #link1 { top: 20px; left: 20px; }
+        #link2 { top: 20px; right: 20px; }
+        #link3 { bottom: 20px; left: 20px; }
+        #link4 { bottom: 20px; right: 20px; }
+    </style>
+</head>
+<body>
+    <a id="link1" href="https://yourdomain.com/flat">추니 평면도</a>
+    <a id="link2" href="https://yourdomain.com/world">추니 월드</a>
+    <a id="link3" href="https://yourdomain.com/building">추니 사옥</a>
+    <a id="link4" href="https://yourdomain.com/about">추니 소개</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene
+        const scene = new THREE.Scene();
+
+        // Camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        scene.add(directionalLight);
+
+        // Load 3D Model (e.g., GLTF)
+        const loader = new THREE.GLTFLoader();
+        loader.load('path/to/your/model.glb', function (gltf) {
+            scene.add(gltf.scene);
+        }, undefined, function (error) {
+            console.error(error);
+        });
+
+        // Animate
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
