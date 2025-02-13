@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabia CNS 고충처리센터</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="chat-window">
+            <h1 class="title">Gabia CNS 고충처리센터</h1>
+            <div class="button-container">
+                <button id="notify-button">고충처리위원 접속 요청</button>
+            </div>
+            <p>WebRTC 기반 서버에 저장하지 않는 보안 메신저입니다.</p>
+            <p style="margin-top: 0;">편하게 말씀해 주세요.</p>
+            <div id="messages"></div>
+            <input type="text" id="message-input" placeholder="고충을 입력해주세요" />
+            <div class="button-container">
+                <button id="send-button">보내기</button>
+            </div>
+            <p class="footer-text">ⓒ 2025 인사총무유닛</p> <!-- 추가된 문구 -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
